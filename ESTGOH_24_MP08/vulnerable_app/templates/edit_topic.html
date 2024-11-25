@@ -6,7 +6,6 @@
 <body>
     <h1>Edit Topic</h1>
     <form method="post">
-        {{ csrf_token() }}
         Title: <input type="text" name="title" value="{{ topic[1] }}"><br>
         Content: <textarea name="content">{{ topic[2] }}</textarea><br>
         <input type="submit" value="Update Topic">

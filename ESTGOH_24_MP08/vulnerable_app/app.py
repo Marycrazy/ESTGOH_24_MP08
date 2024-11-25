@@ -2,12 +2,9 @@ from flask import Flask, request, render_template, redirect, url_for, session, g
 import sqlite3
 import bcrypt
 import os
-from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-csrf = CSRFProtect(app)
-
 
 DATABASE = 'database.db'
 
@@ -93,17 +90,15 @@ def topic(topic_id):
 
 @app.route('/edit_comment/<int:comment_id>', methods=['GET', 'POST'])
 def edit_comment(comment_id):
-    if 'username' not in session:
-        return redirect(url_for('login'))
     return edit_item('comments', comment_id, 'content')
 
 @app.route('/edit_topic/<int:topic_id>', methods=['GET', 'POST'])
 def edit_topic(topic_id):
-    if 'username' not in session:
-        return redirect(url_for('login'))
     return edit_item('topics', topic_id, 'title', 'content')
 
 def edit_item(table, item_id, *fields):
+    if 'username' not in session:
+        return redirect(url_for('login'))
     conn = get_db()
     if request.method == 'POST':
         data = {field: request.form[field] for field in fields}
