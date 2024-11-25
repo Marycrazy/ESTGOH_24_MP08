@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form method="post">
+        {{ csrf_token() }}
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

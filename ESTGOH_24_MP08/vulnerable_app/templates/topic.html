@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>{{ topic[1] }}</title>
+</head>
+<body>
+    <h1>{{ topic[1] }}</h1>
+    <p>{{ topic[2] }}</p>
+    <p>Author: {{ topic[3] }}</p>
+    <hr>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p>{{ comment[1] }} - {{ comment[3] }}</p>
+                {% if session.get('username') == comment[3] %}
+                    <a href="{{ url_for('edit_comment', comment_id=comment[0]) }}">Edit</a> |
+                    <a href="{{ url_for('delete_comment', comment_id=comment[0])}}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Add Comment</h2>
+    <form method="post">
+        <textarea name="content"></textarea><br>
+        <input type="submit" value="Add Comment">
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>New Topic</title>
+</head>
+<body>
+    <h1>Create New Topic</h1>
+    <form method="post">
+        {{ csrf_token() }}
+        Title: <input type="text" name="title"><br>
+        Content: <textarea name="content"></textarea><br>
+        <input type="submit" value="Create Topic">
+    </form>
+</body>
+</html>
