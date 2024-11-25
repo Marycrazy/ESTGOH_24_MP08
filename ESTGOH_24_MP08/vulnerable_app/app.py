@@ -5,8 +5,8 @@ import os
 from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
 csrf = CSRFProtect(app)
+app.secret_key = os.urandom(24)
 
 
 DATABASE = 'database.db'
