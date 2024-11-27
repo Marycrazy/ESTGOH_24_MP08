@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <title>Edit Comment</title>
+</head>
+<body>
+    <h1>Edit Comment</h1>
+    <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <textarea name="content"></textarea><br>
+        <input type="submit" value="Update Comment">
+    </form>
+</body>
+</html>
